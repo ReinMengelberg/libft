@@ -6,7 +6,7 @@
 /*   By: rein <rein@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/08 20:10:52 by rein          #+#    #+#                 */
-/*   Updated: 2025/02/22 17:31:27 by rein          ########   odam.nl         */
+/*   Updated: 2025/11/01 12:51:56 by rein          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdbool.h>
 
 // Libft
 int			ft_isalpha(int i);
@@ -70,5 +71,6 @@ int			ft_print_procent(void);
 int			ft_rev_and_write(char *str);
 
 //get_next_line
+char		*get_next_line(int fd);
 
 #endif
