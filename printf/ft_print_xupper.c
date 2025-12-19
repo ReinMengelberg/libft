@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_print_xupper.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmengelb <rmengelb@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/11/01 17:58:09 by rmengelb      #+#    #+#                 */
-/*   Updated: 2024/11/03 12:26:15 by rmengelb      ########   odam.nl         */
+/*   Created: 2024/11/02 18:07:43 by rmengelb      #+#    #+#                 */
+/*   Updated: 2025/11/29 14:19:05 by rmengelb      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_dprint_xupper(int fd, unsigned int x)
 {
-	size_t		i;
-	va_list		args;
-	long int	pc;
+	const char		*hex_digits;
+	char			temp[19];
+	int				i;
 
+	hex_digits = "0123456789ABCDEF";
 	i = 0;
-	pc = 0;
-	va_start(args, format);
-	while (format[i] != '\0')
+	if (x == 0)
+		temp[i++] = '0';
+	while (x > 0)
 	{
-		if (format[i] != '%')
-		{
-			write(1, &format[i], 1);
-			pc++;
-		}
-		else
-			pc += ft_which_print(format[++i], args);
-		i++;
+		temp[i++] = hex_digits[x % 16];
+		x /= 16;
 	}
-	return (pc);
+	temp[i] = '\0';
+	return (ft_dprint_rev(fd, temp));
 }
